@@ -1,9 +1,0 @@
-  Method |     crit | comp. rate | abs_rel quad | sq_rel quad | rmse quad | abs_rel dense | sq_rel dense | 
-quad_S_640x192_sparse_crit_0.07_v5 & 0.07 &    31.5  &   0.179  &   2.212  &   9.901  &   0.163  &   2.106  &   9.736  &    35.7 \\
-        Q5 |       Q4 |       Q3 |       Q2 |       Q1 |       Q0 | &  0.1854  &  0.3252  &  0.2156  &  0.2448  &  0.0233  &  0.0058    Method |     crit | comp. rate | abs_rel quad | sq_rel quad | rmse quad | abs_rel dense | sq_rel dense | 
-quad_S_640x192_sparse_crit_0.01_v5_bis & 0.04 &    10.3  &   0.169  &   2.173  &   9.963  &   0.157  &   2.062  &   9.764  &     7.8 \\
-        Q5 |       Q4 |       Q3 |       Q2 |       Q1 |       Q0 | &  0.0531  &  0.2169  &  0.2351  &  0.3047  &  0.1562  &  0.0340    Method |     crit | comp. rate | abs_rel quad | sq_rel quad | rmse quad | abs_rel dense | sq_rel dense | 
-quad_S_640x192_sparse_crit_0.07_v5 & 0.07 &    31.5  &   0.179  &   2.212  &   9.901  &   0.163  &   2.106  &   9.736  &    35.7 \\
-        Q5 |       Q4 |       Q3 |       Q2 |       Q1 |       Q0 | &  0.1854  &  0.3252  &  0.2156  &  0.2448  &  0.0233  &  0.0058    Method |     crit | comp. rate | abs_rel quad | sq_rel quad | rmse quad | abs_rel dense | sq_rel dense | 
-quad_S_640x192_sparse_crit_0.01_v5_bis & 0.04 &    10.3  &   0.169  &   2.173  &   9.963  &   0.157  &   2.062  &   9.764  &     7.8 \\
-        Q5 |       Q4 |       Q3 |       Q2 |       Q1 |       Q0 | &  0.0531  &  0.2169  &  0.2351  &  0.3047  &  0.1562  &  0.0340  
