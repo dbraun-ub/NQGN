@@ -339,50 +339,6 @@ class Trainer:
 
         return outputs
 
-    def densify_disp_training(self, outputs):
-        # densify disparity maps
-        outputs[("disp_dense", 5)] = outputs[("disp", 5)].clone()
-
-
-        disp4 = outputs[("disp", 4)].clone()
-        outputs[("disp_dense", 4)] = disp4
-
-        mask4 = torch.round(F.interpolate(outputs[("quad_mask", 4)], scale_factor=4.0))
-        # disp4 = disp4 * mask4 + self.up(outputs[("disp", 5)]) * (1 - mask4)
-
-
-        disp3 = outputs[("disp", 3)].clone()
-        disp3 = disp3 * mask4 + self.up(disp4) * (1 - mask4)
-
-        mask3 = torch.round(F.interpolate(outputs[("quad_mask", 3)], scale_factor=4.0))
-        # disp3 = disp3 * mask3 + self.up(disp4) * (1 - mask3)
-
-        outputs[("disp_dense", 3)] = disp3
-
-        disp2 = outputs[("disp", 2)].clone()
-        disp2 = disp2 * mask3 + self.up(disp3) * (1 - mask3)
-
-        mask2 = torch.round(F.interpolate(outputs[("quad_mask", 2)], scale_factor=4.0))
-        # disp2 = disp2 * mask2 + self.up(disp3) * (1 - mask2)
-
-        outputs[("disp_dense", 2)] = disp2
-
-        disp1 = outputs[("disp", 1)].clone()
-        disp1 = disp1 * mask2 + self.up(disp2) * (1 - mask2)
-
-        mask1 = torch.round(F.interpolate(outputs[("quad_mask", 1)], scale_factor=4.0))
-        # disp1 = disp1 * mask1 + self.up(disp2) * (1 - mask1)
-
-        outputs[("disp_dense", 1)] = disp1
-
-        disp0 = outputs[("disp", 0)].clone()
-        disp0 = disp0 * mask1 + self.up(disp1) * (1 - mask1)
-        # mask0 = torch.round(self.up(outputs[("quad_mask", 0)]))
-        # disp0 = disp0 * mask0 + self.up(disp1) * (1 - mask0)
-
-        outputs[("disp_dense", 0)] = disp0
-
-        return outputs
 
 
     def generate_images_pred(self, inputs, outputs):
@@ -390,12 +346,7 @@ class Trainer:
         Generated images are saved into the `outputs` dictionary.
         """
 
-        if self.opt.arch_decoder == "QGN_light_resnet18":
-            outputs = self.densify_disp_light(outputs)
-        elif self.opt.arch_decoder == "QGN_automasking_self_resnet18":
-            outputs = self.densify_disp_training(outputs)
-        else:
-            outputs = self.densify_disp(outputs)
+        outputs = self.densify_disp(outputs)
 
         for scale in self.opt.scales:
             disp = outputs[("disp_dense", scale)]
@@ -650,7 +601,7 @@ class Trainer:
                     "quad_disp_{}/{}".format(s, j),
                     outputs[("disp", s)][j], self.step)
 
-                if not (self.opt.arch_decoder == "QGN_light_resnet18" and s == 3) and not (s == 5):
+                if not (s == 5):
                     writer.add_image(
                         "quad_mask_{}/{}".format(s, j),
                         outputs[("quad_mask", s)][j], self.step)

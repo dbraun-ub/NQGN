@@ -89,7 +89,6 @@ class MonodepthOptions:
         self.parser.add_argument("--arch_decoder",
                                  type=str,
                                  help="decoder architecture",
-                                 choices=["QGN_resnet18", "QGN_automasking_resnet18", "QGN_light_resnet18", "QGN_automasking_v2_resnet18", "QGN_automasking_self_resnet18"],
                                  default="QGN_resnet18")
         self.parser.add_argument('--fc_dim',
                                  default=2048,
@@ -244,7 +243,7 @@ class MonodepthOptions:
         self.parser.add_argument("--path_save_images",
                                  help="define path from where images will be saved",
                                  type=str,
-                                 default="results/images")                         
+                                 default="results/images")
 
     def parse(self):
         self.options = self.parser.parse_args()
