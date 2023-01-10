@@ -3,7 +3,7 @@ N-QGN: Navigation Map from a Monocular Camera using Quadtree Generating Networks
 
 
 # Citation
-'''
+```
 @inproceedings{braun2022n,
   title={N-QGN: Navigation Map from a Monocular Camera using Quadtree Generating Networks},
   author={Braun, Daniel and Morell, Olivier and Vasseur, Pascal and Demonceaux, C{\'e}dric},
@@ -12,4 +12,4 @@ N-QGN: Navigation Map from a Monocular Camera using Quadtree Generating Networks
   year={2022},
   organization={IEEE}
 }
-'''
+```
